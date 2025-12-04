@@ -1,0 +1,139 @@
+/* Styles for the Banana Bread Recipe Page */
+
+/* Define style for the body */
+body.home {
+  background-color: #bd91ed;  
+}
+
+body.recipe-page {
+  background-color: blanchedalmond;  
+}
+
+/*Style for all headers*/
+h1,h2,h3,h4{
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/*Style for h1*/
+h1{
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+
+/*Style for h2*/
+h2{
+  font-size: 25px;
+  font-weight: normal;
+}
+
+/*Style for h3*/
+h3{
+  font-size: 20px;
+  font-weight: normal;
+}
+
+/*Style for h1*/
+h4{
+  font-size: 17px;
+  font-weight: normal;
+}
+
+/*Style for paragraphs*/
+p {
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.5;
+}
+
+/* Section styling */
+section {
+  margin: 10px 20px;
+  padding: 10px;
+}
+
+/* Ingredients section styling */
+.ingredients-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 50px;
+  gap: 20px;
+}
+
+/* Styling and animation for each ingredient type */
+.ingredient-group {
+  background: #fff; 
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* What happens when you hover or click */
+.ingredient-group:hover {
+  transform: scale(1.05); /* makes the box grow */
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* optional glow */
+}
+
+.ingredient-group:active {
+  transform: scale(1.10);
+}
+
+/*Style for images to be centered*/
+.image-container1 {
+  display: flex;
+  justify-content: center; /* centers images horizontally */
+  gap: 5px;      /* spacing between images */
+}
+
+.image-container img {
+  width: 180px;  
+  height: auto;
+}
+
+/*Style for all unordered lists*/
+.related-bulletpoints {
+  font-size: 16px;
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+  list-style-type: square;
+}
+
+/*Style for hyperlinks*/
+a:link, a:visited{
+  color: green;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: darkgreen;
+  text-decoration: none;
+}
+
+.highlight {
+  background-color: yellow;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
+
+.details-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 20px;                              /* spacing between items */
+  background: #fff;                       /* box background */
+  padding: 20px;
+  margin: 20px auto;                      /* centers the box */
+  width: 80%;                             /* controls width */
+  max-width: 800px;                       /* keeps it neat on large screens */
+  border-radius: 10px;                    /* rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* soft shadow */
+}
+
+.detail-item {
+  text-align: center;                     /* centers text inside each column */
+  font-size: 14px;
+}
+
