@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Auto-fill Form</title>
+</head>
+<body>
+    <!-- The script will create and append the form to the document body -->
+    <script>
+    /*
+            index.js
+            Creates a simple form and provides an "Auto-fill via alerts" flow using prompt/alert/confirm.
+    */
+
+    (function () {
+            // Helpers
+            const qs = (sel, ctx = document) => ctx.querySelector(sel);
+
+            // Create form UI
+            function createForm() {
+                    const form = document.createElement('form');
+                    form.id = 'sampleForm';
+                    form.style.maxWidth = '420px';
+                    form.style.margin = '24px';
+                    form.style.fontFamily = 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial';
+
+                    form.innerHTML = `
+                            <h3>Contact</h3>
+                            <label>Name (required)<br><input name="name" type="text" required /></label><br><br>
+                            <label>Email (required)<br><input name="email" type="email" required /></label><br><br>
+                            <label>Age<br><input name="age" type="number" min="0" /></label><br><br>
+                            <label>Message<br><textarea name="message" rows="4"></textarea></label><br><br>
+                            <button type="submit">Submit</button>
+                            <button type="button" id="autofillBtn">Auto-fill via alerts</button>
+                            <button type="button" id="clearBtn">Clear</button>
+                    `;
+
+                    document.body.appendChild(form);
+
+                    // Event handlers
+                    form.addEventListener('submit', onSubmit);
+                    qs('#autofillBtn', form).addEventListener('click', onAutoFill);
+                    qs('#clearBtn', form).addEventListener('click', () => form.reset());
+            }
+
+            // Basic email validation
+            function isValidEmail(email) {
+                    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            }
+
+            // Auto-fill flow using prompt/confirm/alert
+            function onAutoFill() {
+                    const form = qs('#sampleForm');
+                    if (!form) return;
+
+                    // Prompt user for values. If user cancels any prompt (null), stop and notify.
+                    const current = (name) => form.elements[name].value || '';
+                    const name = prompt('Enter name (required):', current('name'));
+                    if (name === null) { alert('Auto-fill cancelled.'); return; }
+                    if (!name.trim()) { alert('Name is required. Auto-fill aborted.'); return; }
+
+                    const email = prompt('Enter email (required):', current('email'));
+                    if (email === null) { alert('Auto-fill cancelled.'); return; }
+                    if (!isValidEmail(email.trim())) { alert('Invalid email. Auto-fill aborted.'); return; }
+
+                    const ageInput = prompt('Enter age (optional):', current('age'));
+                    if (ageInput === null) { alert('Auto-fill cancelled.'); return; }
+                    let age = '';
+                    if (ageInput.trim() !== '') {
+                            const n = Number(ageInput);
+                            if (!Number.isFinite(n) || n < 0) { alert('Invalid age. Auto-fill aborted.'); return; }
+                            age = String(n);
+                    }
+
+                    const message = prompt('Enter message (optional):', current('message'));
+                    if (message === null) { alert('Auto-fill cancelled.'); return; }
+
+                    // Confirm before applying
+                    const summary = `Apply these values?\n\nName: ${name}\nEmail: ${email}\nAge: ${age || '(empty)'}\nMessage: ${message || '(empty)'}`;
+                    if (!confirm(summary)) { alert('Auto-fill cancelled.'); return; }
+
+                    // Fill form fields
+                    form.elements['name'].value = name.trim();
+                    form.elements['email'].value = email.trim();
+                    form.elements['age'].value = age;
+                    form.elements['message'].value = message;
+
+                    alert('Form has been auto-filled.');
+            }
+
+            // Form submit handler
+            function onSubmit(event) {
+                    event.preventDefault();
+                    const form = event.currentTarget;
+                    const data = {
+                            name: form.elements['name'].value.trim(),
+                            email: form.elements['email'].value.trim(),
+                            age: form.elements['age'].value.trim(),
+                            message: form.elements['message'].value.trim()
+                    };
+
+                    // Basic validation
+                    if (!data.name) { alert('Please provide a name.'); return; }
+                    if (!isValidEmail(data.email)) { alert('Please provide a valid email.'); return; }
+
+                    // Simulate successful submit
+                    alert('Form submitted:\n\n' +
+                            `Name: ${data.name}\nEmail: ${data.email}\nAge: ${data.age || '(empty)'}\nMessage: ${data.message || '(empty)'}`);
+                    form.reset();
+            }
+
+            // Initialize on DOM ready
+            if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', createForm);
+            } else {
+                    createForm();
+            }
+    })();
+    </script>
+</body>
+</html>
