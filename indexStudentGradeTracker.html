@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assessment/Assets/Styles/index.css" />
+    <script src="studentgradetracker.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Grade Tracker</h1>
+    <p> This is your personal student grade tracker that helps you keep track of your students' grades. Please follow the instructions below to add or remove students and their grades.</p>
+    <br>
+    <p>Enter the student's name and grade, then click "Add Student" to add them to the list.
+        To delete a student, simply click on their name and then the "Delete" buttom.
+    </p>
+    <form id="student-form">
+        <input type="text" id="student-name" placeholder="Enter student name" required />
+        <input type="number" id="student-grade" placeholder="Enter student grade" required />
+        <button type="submit">Add Student</button>
+    </form>
+    <ul id="student-list"></ul>
+</body>
+</html>
