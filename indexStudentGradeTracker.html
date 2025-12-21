@@ -5,20 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Assessment/Assets/Styles/index.css" />
     <script src="studentgradetracker.js" defer></script>
-    <title>Document</title>
+    <title>Student Grade Tracker</title>
 </head>
 <body>
     <h1>Student Grade Tracker</h1>
+    <section>
     <p> This is your personal student grade tracker that helps you keep track of your students' grades. Please follow the instructions below to add or remove students and their grades.</p>
     <br>
     <p>Enter the student's name and grade, then click "Add Student" to add them to the list.
-        To delete a student, simply click on their name and then the "Delete" buttom.
+        To delete a student, simply click on the "Remove" button beside their name.
     </p>
-    <form id="student-form">
-        <input type="text" id="student-name" placeholder="Enter student name" required />
-        <input type="number" id="student-grade" placeholder="Enter student grade" required />
-        <button type="submit">Add Student</button>
-    </form>
+   <form id="student-form">
+  <label>
+    Student Name:
+    <input type="text" id="student-name" />
+  </label>
+  <div id="name-error" class="error"></div>
+  <br>
+
+  <label>
+    Grade:
+    <input type="text" id="student-grade" />
+  </label>
+  <div id="grade-error" class="error"></div>
+  <br>
+  <button type="submit">Add Student</button>
+</form>
     <ul id="student-list"></ul>
+    </section>
+    <section>
+        <table id="student-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="student-table-body">
+                <!-- Student rows will be added here dynamically -->
+            </tbody>
+        </table>
+        <p id="average-grade"></p>
+    </section>
 </body>
 </html>

@@ -28,6 +28,7 @@ for (const value of iterable) {
 }
 
 
+
 //for ... in
 
 const object = { name: "John", age: 20 };

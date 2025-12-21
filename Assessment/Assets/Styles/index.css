@@ -138,3 +138,18 @@ a:hover {
   font-size: 14px;
 }
 
+#student-table{
+  width: 50%;
+  border-collapse: collapse;
+} 
+#student-table th, #student-table td{
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
