@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- add link to css and js files -->
+    <link rel="stylesheet" href="calculator.css" />
+    <script src="calculator.js" defer></script>
+    <title>Simple Calculator</title>
+</head>
+<body>
+    <div class="calculator">
+    <div id="display" class="display">0</div>
+    <!-- Buttons for digits and operations -->
+    <div class="buttons">
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button onclick="appendToDisplay('*')" class="orange">×</button>
+        <button onclick="appendToDisplay('/')" class="orange">÷</button>
+        
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button onclick="appendToDisplay('+')" class="orange">+</button>
+        <button onclick="appendToDisplay('-')" class="orange">-</button>
+        
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button onclick="appendToDisplay('%')" class="orange">%</button>
+        <button onclick="appendToDisplay('**')" class="orange">^</button>
+        
+        <button onclick="appendToDisplay('.')">.</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <!-- actions for backspace, clear, and equals  -->
+        <button onclick="deleteLast()" class="backspace">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22 3H7c-.69 0-1.23.35-1.59.88L0 12l5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-3 12.59L17.59 17 14 13.41 10.41 17 9 15.59 12.59 12 9 8.41 10.41 7 14 10.59 17.59 7 19 8.41 15.41 12 19 15.59z"/></svg>
+        </button>
+        <button onclick="clearDisplay()" class="orange">C</button>
+        <button onclick="calculate()" class="gray">=</button>
+    </div>
+</div>
+</body>
+</html>
